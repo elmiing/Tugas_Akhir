@@ -2,5 +2,5 @@
 #include <string>
 #include <fstream>
 
-int main ()
 using namespace std;
+int main ()
