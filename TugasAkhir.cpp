@@ -4,6 +4,21 @@
 
 using namespace std;
 
+struct DataPengguna {
+    string nama;
+    int usia;
+    int batuk;
+    int sesak;
+    int IritasiMata;
+    string wilayah;
+    int ispu;
+
+    int SkorUsia;
+    int SkorPenyakit;
+    int SkorKeluhan;
+    int SkorISPU;
+    int totalSkor;
+};
 
 string tentukanKategori(int totalSkor){
     if (totalSkor <= 3){
@@ -27,21 +42,7 @@ void tampilkanSaran(string kategori){
         cout<<"Saran: Hindari Paparan Asap Segera Cari Bantuan Medis Jika Mengalami Keluhan Berat"<<endl;
 }
 }
-struct DataPengguna {
-    string nama;
-    int usia;
-    int batuk;
-    int sesak;
-    int iritasiMata;
-    string wilayah;
-    int ispu;
 
-    int skorusia;
-    int skorpenyakit;
-    int skorkeluhan;
-    int skorISPU;
-    int totalSkor;
-};
 
 int main() {
 
@@ -72,7 +73,7 @@ int main() {
 
         data[i].batuk = inputAngka("Apakah Mengalami Batuk? ", 0, 1);
         data[i].sesak = inputAngka("Apakah Mengalami Sesak Napas? ", 0, 1);
-        data[i].iritasiMata = inputAngka("Apakah Mengalami Iritasi Mata? ", 0, 1);
+        data[i].IritasiMata = inputAngka("Apakah Mengalami Iritasi Mata? ", 0, 1);
         data[i].batuk = inputAngka("Apakah Mengalami Batuk? ", 0, 1);
 
         cout<<"\n Wilayah Tempat Tinggal: ";
