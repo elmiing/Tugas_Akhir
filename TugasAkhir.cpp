@@ -83,7 +83,7 @@ int main() {
 
         //Perhitungan Skor
 
-        data[i].skorusia =hitungskorusia(data[i].usia);
+        data[i].SkorUsia = hitungSkorUsia(data[i].usia);
         
     }
 
