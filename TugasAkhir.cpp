@@ -27,6 +27,21 @@ void tampilkanSaran(string kategori){
         cout<<"Saran: Hindari Paparan Asap Segera Cari Bantuan Medis Jika Mengalami Keluhan Berat"<<endl;
 }
 }
+struct DataPengguna {
+    string nama;
+    int usia;
+    int batuk;
+    int sesak;
+    int iritasiMata;
+    string wilayah;
+    int ispu;
+
+    int skorusia;
+    int skorpenyakit;
+    int skorkeluhan;
+    int skorISPU;
+    int totalSkor;
+};
 
 int main() {
 
