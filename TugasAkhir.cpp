@@ -7,6 +7,7 @@ using namespace std;
 struct DataPengguna {
     string nama;
     int usia;
+    int penyakit;
     int batuk;
     int sesak;
     int IritasiMata;
@@ -18,6 +19,8 @@ struct DataPengguna {
     int SkorKeluhan;
     int SkorISPU;
     int totalSkor;
+
+    string kategori;
 };
 
 string tentukanKategori(int totalSkor){
@@ -84,7 +87,46 @@ int main() {
         //Perhitungan Skor
 
         data[i].SkorUsia = hitungSkorUsia(data[i].usia);
-        
+        data[i].SkorPenyakit = hitungSkorPenyakit(data[i].penyakit);
+        data[i].SkorKeluhan = hitungSkorKeluhan(data[i].batuk,data[i].sesak,data[i].IritasiMata);
+        data[i].SkorISPU = hitungSkorISPU(data[i].ispu);
+
+        //total skor
+        data[i].totalSkor = data[i].SkorUsia + data[i].SkorPenyakit + data[i].SkorKeluhan + data[i].SkorISPU;
+
+        data[i].kategori = tentukanKategori(data[i].totalSkor);
+
+        cout<<"\nData Pengguna Berhasil Diproses!"<<endl;
     }
+    //Menampilkan hasil pemeriksaan
+    cout<<"\n========Hasil Pemeriksaan========"<<endl;
+
+    for(int i=0; i<jumlahPengguna; i++){
+
+        cout<<"\n========Data Pengguna ke-"<<i+1<<"========"<<endl;
+        cout<<"Nama: "<<data[i].nama<<endl;
+        cout<<"Usia: "<<data[i].usia<<endl;
+        cout<<"Wilayah Tempat Tinggal: "<<data[i].wilayah<<endl;
+        cout<<"Nilai ISPU: "<<data[i].ispu<<endl;
+        //rincian skor
+        cout<<"\nSkor Usia: "<<data[i].SkorUsia<<endl;
+        cout<<"Skor Riwayat Penyakit: "<<data[i].SkorPenyakit<<endl;
+        cout<<"Skor Keluhan: "<<data[i].SkorKeluhan<<endl;
+        cout<<"Skor ISPU: "<<data[i].SkorISPU<<endl;
+
+        cout<<"\nTotal Skor: "<<data[i].totalSkor<<endl;
+        cout<<"Kategori Resiko Kesehatan: "<<data[i].kategori<<endl;
+
+        tampilkanSaran(data[i].kategori);
+    }
+        //hapus array dinamis
+        delete[] data;
+
+        cout<<"\n========================================"<<endl;
+        cout<<"Seluruh Pengecekan Telah Selesai"<<endl;
+        cout<<"\n========================================"<<endl;
+
+        return 0;
+    
 
 }
