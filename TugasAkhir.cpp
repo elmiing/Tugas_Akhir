@@ -52,7 +52,7 @@ int main() {
 
     //input jumlah pengguna yang memasukkan data
     jumlahPengguna = inputAngka(
-        Masukkan Jumlah pengguna (1-10):",1,10"
+        "Masukkan Jumlah pengguna (1-10):",1,10
     );
 
     //Array Dinamis
@@ -80,8 +80,10 @@ int main() {
 
         data[i].ispu = inputAngka("Masukkan Nilai ISPU (0-5000):", 0, 5000);
 
+        //Perhitungan Skor
 
-
+        data[i].skorusia =hitungskorusia(data[i].usia);
+        
     }
 
 }
