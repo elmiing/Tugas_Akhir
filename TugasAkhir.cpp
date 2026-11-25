@@ -119,9 +119,9 @@ int hitungSkorISPU(int ispu) {
 string tentukanKategori(int totalSkor, int ispu, bool statusDarurat) {
     if (statusDarurat) {
         return "DARURAT MEDIS (Risiko Sangat Tinggi)";
-    } else if (ispu > 300 || totalSkor > 7) {
+    } else if (ispu > 300 || totalSkor > 9) {
         return "Risiko Tinggi";
-    } else if (totalSkor >= 4) {
+    } else if (totalSkor >= 6) {
         return "Risiko Sedang";
     } else {
         return "Risiko Rendah";
