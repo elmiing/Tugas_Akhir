@@ -13,7 +13,6 @@ struct DataPengguna {
     int IritasiMata;
     string wilayah;
     int ispu;
-
     int SkorUsia;
     int SkorPenyakit;
     int SkorKeluhan;
@@ -22,6 +21,13 @@ struct DataPengguna {
 
     string kategori;
 };
+
+string namaPenyakit(int penyakit){
+    if (penyakit == 1) return "Asma";
+    else if (penyakit == 2) return "Penyakit jantung";
+    else if (penyakit == 3) return "Penyakit paru kronis";
+    else return "Tidak ada";
+}
 
 string tentukanKategori(int totalSkor){
     if (totalSkor <= 3){
@@ -51,6 +57,7 @@ int main() {
 
     int jumlahPengguna;
 
+
     cout<<"========Sistem Penilaian Resiko Kesehatan========"<<endl;
     cout<<"========Akibat Paparan Asap Kebakaran Hutan========"<<endl;
 
@@ -67,21 +74,32 @@ int main() {
         cout<<"========Data Pengguna ke-"<<i+1<<"========"<<endl;
         cout<<"Nama: ";
         getline(cin, data[i].nama);
-        
-        data[i].usia = inputAngka("Usia: ", 0, 200);
+    
+     data[i].usia = inputAngka("Usia: ", 0, 200);
 
-        cout<<"\nRiwayat Penyakit:\n";
+        cout << "\nRiwayat Penyakit:" << endl;
+        cout << "0. Tidak ada" << endl;
+        cout << "1. Asma" << endl;
+        cout << "2. Penyakit jantung" << endl;
+        cout << "3. Penyakit paru kronis" << endl;
+        data[i].penyakit = inputAngka("Pilihan (0-3): ", 0, 3);   // <- ini yang mengisi data
+
+
+        cout<<"\nKeluhan yang Dialami:\n";
         cout<<"0. Tidak ada\n";
         cout<<"1. Ada\n";
-
+    
         data[i].batuk = inputAngka("Apakah Mengalami Batuk? ", 0, 1);
         data[i].sesak = inputAngka("Apakah Mengalami Sesak Napas? ", 0, 1);
         data[i].IritasiMata = inputAngka("Apakah Mengalami Iritasi Mata? ", 0, 1);
-        data[i].batuk = inputAngka("Apakah Mengalami Batuk? ", 0, 1);
+        data[i].batuk = inputAngka("Apakah Mengalami SakitTenggorokan? ", 0, 1);
+
+
 
         cout<<"\n Wilayah Tempat Tinggal: ";
         getline(cin, data[i].wilayah);
-
+    
+        
         data[i].ispu = inputAngka("Masukkan Nilai ISPU (0-5000):", 0, 5000);
 
         //Perhitungan Skor
