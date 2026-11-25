@@ -8,6 +8,9 @@ using namespace std;
 struct DataPengguna {
     string nama;
     int usia;
+    int asma;
+    int jantung;
+    int paruKronis;
     int penyakit;
     int batuk;
     int sesak;
@@ -77,15 +80,16 @@ int hitungSkorUsia(int usia) {
 }
 
 // Fitur 8: Perhitungan skor riwayat penyakit
-int hitungSkorPenyakit(int penyakit) {
-    if (penyakit == 0) {
-        return 0; // Tidak ada riwayat
-    } else if (penyakit == 1) {
-        return 2; // Asma
-    } else {
-        return 3; // Penyakit jantung atau paru kronis
-    }
+int hitungSkorPenyakit(int asma, int jantung, int paruKronis) {
+    int totalSkor = 0;
+
+    if (asma == 1) totalSkor += 2;
+    if (jantung == 1) totalSkor += 3;
+    if (paruKronis == 1) totalSkor += 3;
+
+    return totalSkor;
 }
+    
 
 // Fitur 9: Perhitungan skor keluhan (mengambil skor tertinggi, tidak dihitung ganda)
 int hitungSkorKeluhan(int batuk, int sesak, int iritasiMata, int sakitTenggorokan, int gejalaBerat) {
@@ -197,13 +201,12 @@ int main() {
         data[i].usia = inputAngka("Usia (0-200): ", 0, 200);
 
         // Fitur 2: Riwayat penyakit
-        cout << "\nRiwayat Penyakit:" << endl;
-        cout << "0. Tidak ada" << endl;
-        cout << "1. Asma" << endl;
-        cout << "2. Penyakit jantung" << endl;
-        cout << "3. Penyakit paru kronis" << endl;
-        data[i].penyakit = inputAngka("Pilihan (0-3): ", 0, 3);
+        cout << "\nRiwayat Penyakit (0 = Tidak ada, 1 = Ada):" << endl;
+        data[i].asma = inputAngka("1. Apakah memiliki riwayat Asma? (0/1)                    : ", 0, 1);
+        data[i].jantung = inputAngka("2. Apakah memiliki riwayat Penyakit Jantung? (0/1)         : ", 0, 1);
+        data[i].paruKronis = inputAngka("3. Apakah memiliki riwayat Penyakit Paru Kronis? (0/1)     : ", 0, 1);
 
+        
         // Fitur 3: Keluhan kesehatan & gejala darurat
         cout << "\nKeluhan yang Dialami (0 = Tidak ada, 1 = Ada):" << endl;
         data[i].batuk            = inputAngka("1. Apakah mengalami Batuk? (0/1)                  : ", 0, 1);
@@ -221,7 +224,11 @@ int main() {
 
         // Fitur 7 - 10: Perhitungan skor tiap faktor
         data[i].skorUsia     = hitungSkorUsia(data[i].usia);
-        data[i].skorPenyakit = hitungSkorPenyakit(data[i].penyakit);
+        data[i].skorPenyakit = hitungSkorPenyakit(
+            data[i].asma,
+            data[i].jantung, 
+            data[i].paruKronis
+        );
         data[i].skorKeluhan  = hitungSkorKeluhan(
             data[i].batuk,
             data[i].sesak,
