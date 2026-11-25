@@ -59,14 +59,8 @@ int inputAngka(string pesan, int minVal, int maxVal) {
 }
 
 // =========================================================================
-// FUNGSI BANTU & FITUR 7 - 10 (Perhitungan Skor per Faktor)
+// FITUR 7 - 10 (Perhitungan Skor per Faktor)
 // =========================================================================
-string namaPenyakit(int penyakit) {
-    if (penyakit == 1) return "Asma";
-    else if (penyakit == 2) return "Penyakit jantung";
-    else if (penyakit == 3) return "Penyakit paru kronis";
-    else return "Tidak ada";
-}
 
 // Fitur 7: Perhitungan skor usia
 int hitungSkorUsia(int usia) {
@@ -95,11 +89,11 @@ int hitungSkorPenyakit(int asma, int jantung, int paruKronis) {
 int hitungSkorKeluhan(int batuk, int sesak, int iritasiMata, int sakitTenggorokan, int gejalaBerat) {
     int skorTertinggi = 0;
 
-    if (batuk == 1 && 1 > skorTertinggi) skorTertinggi = 1;
-    if (iritasiMata == 1 && 1 > skorTertinggi) skorTertinggi = 1;
-    if (sakitTenggorokan == 1 && 1 > skorTertinggi) skorTertinggi = 1;
-    if (sesak == 1 && 2 > skorTertinggi) skorTertinggi = 2;
-    if (gejalaBerat == 1 && 3 > skorTertinggi) skorTertinggi = 3;
+    if (batuk == 1) skorTertinggi += 1;
+    if (iritasiMata == 1) skorTertinggi += 1;
+    if (sakitTenggorokan == 1) skorTertinggi += 1;
+    if (sesak == 1) skorTertinggi += 2;
+    if (gejalaBerat == 1) skorTertinggi += 3;
 
     return skorTertinggi;
 }
@@ -159,7 +153,7 @@ void tampilkanHasilPemeriksaan(DataPengguna p, int nomor) {
     cout << "Nama                    : " << p.nama << endl;
     cout << "Usia                    : " << p.usia << " tahun" << endl;
     cout << "Wilayah Tempat Tinggal  : " << p.wilayah << endl;
-    cout << "Riwayat Penyakit        : " << namaPenyakit(p.penyakit) << endl;
+    cout << "Riwayat Penyakit        : " << (p.penyakit) << endl;
     cout << "Nilai ISPU              : " << p.ispu << endl;
 
     cout << "\n--- Rincian Skor ---" << endl;
