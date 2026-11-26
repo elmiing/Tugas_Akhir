@@ -153,7 +153,6 @@ void tampilkanHasilPemeriksaan(DataPengguna p, int nomor) {
     cout << "Nama                    : " << p.nama << endl;
     cout << "Usia                    : " << p.usia << " tahun" << endl;
     cout << "Wilayah Tempat Tinggal  : " << p.wilayah << endl;
-    cout << "Riwayat Penyakit        : " << (p.penyakit) << endl;
     cout << "Nilai ISPU              : " << p.ispu << endl;
 
     cout << "\n--- Rincian Skor ---" << endl;
