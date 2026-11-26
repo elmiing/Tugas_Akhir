@@ -11,7 +11,6 @@ struct DataPengguna {
     int asma;
     int jantung;
     int paruKronis;
-    int penyakit;
     int batuk;
     int sesak;
     int iritasiMata;
@@ -148,10 +147,40 @@ void tampilkanSaran(string kategori, bool statusDarurat) {
 // =========================================================================
 // FITUR 14: Menampilkan Hasil Pemeriksaan per Pengguna
 // =========================================================================
+
+void tampilkanRiwayatPenyakit(DataPengguna *p) {
+    bool adaPenyakit = false;
+
+    if (p->asma == 1) {
+        cout << "Asma";
+        adaPenyakit = true;
+    }
+
+    if (p->jantung == 1) {
+        if (adaPenyakit) cout << ", ";
+        cout << "Penyakit Jantung";
+        adaPenyakit = true;
+    }
+
+    if (p->paruKronis == 1) {
+        if (adaPenyakit) cout << ", ";
+        cout << "Penyakit Paru Kronis";
+        adaPenyakit = true;
+    }
+
+    if (!adaPenyakit) {
+        cout << "Tidak Ada";
+    }
+
+    cout << endl;
+}
+
 void tampilkanHasilPemeriksaan(DataPengguna p, int nomor) {
     cout << "\n======== Data Pengguna ke-" << nomor << " ========" << endl;
     cout << "Nama                    : " << p.nama << endl;
     cout << "Usia                    : " << p.usia << " tahun" << endl;
+    cout << "Riwayat Penyakit        : "; 
+    tampilkanRiwayatPenyakit(&p);
     cout << "Wilayah Tempat Tinggal  : " << p.wilayah << endl;
     cout << "Nilai ISPU              : " << p.ispu << endl;
 
