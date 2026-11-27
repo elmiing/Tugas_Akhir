@@ -217,11 +217,13 @@ int main() {
         cout << "\n======== Input Data Pengguna ke-" << i + 1 << " ========" << endl;
 
         // Fitur 1: Identitas pengguna
-        cout << "Nama: ";
-        getline(cin, data[i].nama);
-
-        data[i].usia = inputAngka("Usia (0-200): ", 0, 200);
-
+        do {
+            cout << "Nama Lengkap             : ";
+            getline(cin, data[i].nama);
+            if (data[i].nama.empty()) {
+                cout << "[Error] Nama tidak boleh kosong! Silakan coba lagi.\n";
+            }
+        } while (data[i].nama.empty());
         // Fitur 2: Riwayat penyakit
         cout << "\nRiwayat Penyakit (0 = Tidak ada, 1 = Ada):" << endl;
         data[i].asma = inputAngka("1. Apakah memiliki riwayat Asma? (0/1)                    : ", 0, 1);
@@ -238,8 +240,13 @@ int main() {
         data[i].gejalaBerat      = inputAngka("5. Apakah mengalami Gejala Berat / Nyeri Dada / Pingsan? (0/1): ", 0, 1);
 
         // Fitur 4: Wilayah
-        cout << "\nWilayah Tempat Tinggal: ";
-        getline(cin, data[i].wilayah);
+        do {
+            cout << "\nWilayah Tempat Tinggal: ";
+            getline(cin, data[i].wilayah);
+            if (data[i].wilayah.empty()) {
+                cout << "[Error] Wilayah tidak boleh kosong! Silakan coba lagi.\n";
+            }
+        } while (data[i].wilayah.empty());
 
         // Fitur 5: Kualitas udara (ISPU)
         data[i].ispu = inputAngka("Masukkan Nilai ISPU (0-5000): ", 0, 5000);
